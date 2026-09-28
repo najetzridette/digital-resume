@@ -2,7 +2,7 @@
 
 Online resume built from scratch with **pure HTML and CSS** (no framework, no template), as part of the Epitech Web bootcamp (days 04-05).
 
-🔗 **Live website:** https://YOUR-GITHUB-USERNAME.github.io/webd04/
+🔗 **Live website:** https://najetzridette.github.io/digital-resume/
 
 ## Features
 
