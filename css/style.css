@@ -1,0 +1,435 @@
+/* ==========================================================
+   Digital resume - Najet Zridette
+   Pure HTML / CSS, no framework
+   ========================================================== */
+
+/* Color palette */
+:root {
+    --white: #ffffff;
+    --warm-beige: #f3eee4;
+    --light-beige: #faf8f3;
+    --black: #1a1a1a;
+    --line: #e3dccf;
+    --muted: #8a7f6e;
+    --text-soft: #5a5249;
+}
+
+/* Smooth scrolling when a menu link is clicked */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* keeps titles visible under the sticky menu */
+}
+
+/* Base styles */
+body {
+    background-color: var(--white);
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Beige sections */
+.banniere, #contact {
+    background-color: var(--warm-beige);
+}
+
+/* Headings font */
+h1, h3 {
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+}
+
+/* ---------- Navigation bar ---------- */
+nav {
+    position: sticky; /* the menu stays at the top while scrolling */
+    top: 0;
+    z-index: 10; /* keeps the menu above the rest of the page */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--line);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 24px;
+}
+
+/* Menu links: a line appears under the link on hover */
+nav ul a {
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+nav ul a:hover {
+    border-bottom-color: var(--black);
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+}
+
+.logo span {
+    font-style: italic;
+}
+
+/* ---------- Hero banner ---------- */
+.banniere {
+    text-align: center;
+    padding: 80px 32px;
+}
+
+/* Fade-in animation when the page loads */
+@keyframes apparition {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.banniere > * {
+    animation: apparition 0.8s ease both;
+}
+
+.sous-titre {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 12px;
+}
+
+/* Main title */
+h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin: 0;
+}
+
+/* Small black line under the name */
+h1::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 1px;
+    background-color: var(--black);
+    margin: 24px auto;
+}
+
+.accroche {
+    color: var(--text-soft);
+    margin: 0 0 32px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid var(--black);
+    font-family: inherit;
+    font-size: 14px;
+    margin: 6px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-full {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--black);
+}
+
+.btn-full:hover {
+    background-color: transparent;
+    color: var(--black);
+}
+
+.btn-outline:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* ---------- Sections ---------- */
+section {
+    padding: 56px 32px;
+}
+
+section > * {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Section titles: small numbered labels (01 · Profil) */
+h2 {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+#profil p {
+    color: var(--text-soft);
+}
+
+/* Small grey text (dates, schools...) */
+.discret {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------- Experiences ---------- */
+#experiences {
+    background-color: var(--light-beige);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+details {
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+}
+
+summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* Pushes the dates (and the +/- sign) to the right */
+.dates {
+    margin-left: auto;
+    text-align: right;
+}
+
+/* "+" sign when the experience is closed */
+summary::after {
+    content: "+";
+    font-size: 20px;
+    color: var(--muted);
+}
+
+/* "−" sign when the experience is open */
+details[open] summary::after {
+    content: "−";
+}
+
+/* Missions list */
+details ul {
+    color: var(--text-soft);
+    font-size: 15px;
+    margin: 12px 0 0;
+    padding-left: 20px;
+}
+
+/* ---------- Education ---------- */
+.item {
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+}
+
+.item h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.item p {
+    margin: 4px 0 0;
+}
+
+/* ---------- Skills ---------- */
+#competences h3 {
+    font-size: 18px;
+    margin: 32px 0 12px;
+}
+
+/* Short skills displayed as tags */
+.etiquettes ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* tags go to the next line when there is no room */
+    gap: 8px;
+}
+
+.etiquettes li {
+    border: 1px solid var(--black);
+    font-size: 13px;
+    padding: 4px 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.etiquettes li:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* Long skills displayed as a classic list */
+.longues p {
+    margin: 0 0 8px;
+}
+
+.longues ul {
+    color: var(--text-soft);
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* ---------- Contact form ---------- */
+.ligne {
+    display: flex;
+    gap: 24px;
+}
+
+.champ {
+    flex: 1; /* both fields share the row equally */
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+/* Fields with only a line underneath */
+input, textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--black);
+    background-color: transparent;
+    padding: 8px 0;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--black);
+    transition: background-color 0.3s ease;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Field being filled in: thicker line and lighter background */
+input:focus, textarea:focus {
+    outline: none;
+    border-bottom-width: 2px;
+    background-color: var(--light-beige);
+}
+
+#contact .btn {
+    margin: 8px 0 0;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: var(--black);
+    color: var(--warm-beige);
+    text-align: center;
+    font-size: 13px;
+    padding: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ==========================================================
+   Responsive: screens narrower than 700px (phones)
+   ========================================================== */
+@media (max-width: 700px) {
+
+    html {
+        scroll-padding-top: 0;
+    }
+
+    /* Menu: logo above, links below, not sticky anymore */
+    nav {
+        position: static;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+    }
+
+    .banniere {
+        padding: 56px 20px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    section {
+        padding: 40px 20px;
+    }
+
+    /* Experiences: title above the dates */
+    summary {
+        flex-wrap: wrap;
+        gap: 4px 16px;
+    }
+
+    summary h3 {
+        width: 100%;
+    }
+
+    .dates {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    summary::after {
+        margin-left: auto;
+    }
+
+    /* Form: one field per line */
+    .ligne {
+        flex-direction: column;
+        gap: 0;
+    }
+}
